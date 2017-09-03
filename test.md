@@ -21,7 +21,7 @@ Tips
   * `socketaddr_in.sin_addr.s_addr`
   * `socketaddr_in.sin_port`
   * bind: sock_fd, addr
-  * accept
-  * W/R
+  * accept: sock_fd, fd上最大客户端排队数
+  * W/R
 
   
