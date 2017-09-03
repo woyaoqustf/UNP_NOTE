@@ -15,9 +15,9 @@
     
  TCP 三次握手
  ===========
- client SYN J 发送客户端将在待建立的连接中，发送的`初始数据序号` J
- server 确认(ACK J+1)客户的SYN,同事发送server SYN K 在待建立连接中数据的`初始序号` K
- client ack server的 SYN K+1 告知我接收到了server的同步请求，此时连接建立
+* client SYN J 发送客户端将在待建立的连接中，发送的`初始数据序号` J
+* server 确认(ACK J+1)客户的SYN,同事发送server SYN K 在待建立连接中数据的`初始序号` K
+* client ack server的 SYN K+1 告知我接收到了server的同步请求，此时连接建立
  
  
  TCP连接终止序列
