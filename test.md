@@ -10,7 +10,18 @@ Tips
 * socket  
   * 协议族  
   * 协议类型  
+* sockaddr_in(socket_in6)  
+  * sin_family(sin6_family)  
+  * sin_port(sin6_port) 
+  
+## server
+* socket --> sockfd
 * sockaddr_in  
-  * family  
-  * port  
+  * family
+  * socketaddr_in.sin_addr.s_addr
+  * socketaddr_in.sin_port
+  * bind: sock_fd, addr
+  * accept
+  * W/R
+
   
