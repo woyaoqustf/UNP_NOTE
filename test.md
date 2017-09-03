@@ -23,7 +23,7 @@ Tips
   * bind: sock_fd, addr
   * accept: sock_fd, fd上最大客户端排队数
   * W/R
-> * `三次握手完毕`，accept返回
+    * `三次握手完毕`，accept返回
 > * snprintf  
 >> * 需要输入buffer的大小，可以检查缓冲区异常  
 >> * 末尾添加 \n\r  
