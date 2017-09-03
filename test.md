@@ -23,5 +23,7 @@ Tips
   * bind: sock_fd, addr
   * accept: sock_fd, fd上最大客户端排队数
   * W/R
+>* `三次握手完毕`，accept返回
+
 
   
