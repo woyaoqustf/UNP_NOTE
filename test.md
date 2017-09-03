@@ -18,8 +18,8 @@ Tips
 * socket --> sockfd
 * sockaddr_in  
   * family
-  * socketaddr_in.sin_addr.s_addr
-  * socketaddr_in.sin_port
+  * `socketaddr_in.sin_addr.s_addr`
+  * `socketaddr_in.sin_port`
   * bind: sock_fd, addr
   * accept
   * W/R
