@@ -30,3 +30,8 @@
  ```
  * bind,accept,listen等函数在使用socket_in_ 时需要强转成 sockaddr 类型指针
  * sockaddr 前两位和sockaddr_in_ 的属性和长度是一致的，在强转后可以更具 sa_family 判断family类型然后转换成对应family的类型
+ 
+ 套接字类型
+ =========
+ * 相关的套接字类型有 sockaddr_sin, sockaddr_in6, sockaddr_un, sockaddr_dl, sockaddr_storage
+ * sockaddr_un,sockaddr_dl 是长度可变的，so在sock的接口函数中，有socket长度的参数，用以处理socket的变长特点
