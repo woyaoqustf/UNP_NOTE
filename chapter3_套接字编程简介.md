@@ -41,4 +41,20 @@
 * 即做参数传值，有做函数的返回
 * accept recvfrom， getsockname 这些从内核向进程传递socket结构的函数，接收一个socket_len参数，作为socket的总大小，返回是若是可变长socket，返回边长结构的实际长度
 
+字节序
+======
+* 判定字节序
+```
+union {
+  short s;
+  char c[2];
+}un;
+
+un.s=0x0102;
+if (un.c[0] == 2 && un.c[1] == 1) 小尾端；
+if (un.c[0] == 1 && un.c[1] == 2) 大尾端；
+if (un.c[0] == 2 && un.c[1] == 2) 小尾端；
+```
+* htons, htonl, ntohs,ntohl, h:host, n:net, s:short,l:long
+
 
