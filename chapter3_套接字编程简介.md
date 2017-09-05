@@ -18,3 +18,14 @@
    char sin_zero[8];
  };
  ```
+ 
+ * 通用套接字，由于socket接口在 ANSI C之前就设计好，为了兼容各种family的socket 定义了通用套接字 sockaddr
+ 
+ ```
+ struct sockaddr {
+   uint8_t sa_len;
+   sa_family_t sa_family;
+   char sa_data[14];
+ };
+ ```
+ * sockaddr 前两位和sockaddr_in_ 的属性和长度是一致的，在强转后可以更具 sa_family 判断family类型然后转换成对应family的类型
