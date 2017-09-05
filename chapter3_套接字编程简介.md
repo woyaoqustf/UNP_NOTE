@@ -35,3 +35,8 @@
  =========
  * 相关的套接字类型有 sockaddr_sin, sockaddr_in6, sockaddr_un, sockaddr_dl, sockaddr_storage
  * sockaddr_un,sockaddr_dl 是长度可变的，so在sock的接口函数中，有socket长度的参数，用以处理socket的变长特点
+
+值-结果参数
+==========
+* 即做参数传值，有做函数的返回
+* accept recvfrom， getsockname 这些从内核向进程传递socket结构的函数，接收一个socket_len参数，作为socket的总大小，返回是若是可变长socket，返回边长结构的实际长度
