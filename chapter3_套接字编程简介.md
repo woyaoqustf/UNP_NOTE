@@ -53,7 +53,6 @@ union {
 un.s=0x0102;
 if (un.c[0] == 2 && un.c[1] == 1) 小尾端；
 if (un.c[0] == 1 && un.c[1] == 2) 大尾端；
-if (un.c[0] == 2 && un.c[1] == 2) 小尾端；
 ```
 * htons, htonl, ntohs,ntohl, h:host, n:net, s:short,l:long
 
