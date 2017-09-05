@@ -28,4 +28,5 @@
    char sa_data[14];
  };
  ```
+ * bind,accept,listen等函数在使用socket_in_ 时需要强转成 sockaddr 类型指针
  * sockaddr 前两位和sockaddr_in_ 的属性和长度是一致的，在强转后可以更具 sa_family 判断family类型然后转换成对应family的类型
