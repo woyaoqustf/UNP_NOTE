@@ -56,4 +56,23 @@ if (un.c[0] == 1 && un.c[1] == 2) 大尾端；
 ```
 * htons, htonl, ntohs,ntohl, h:host, n:net, s:short,l:long
 
+字节操作函数
+===========
+bzero
+bcopy
+bcmp
 
+memset
+memcpy 源串与目标从重叠，出错
+memcmp
+
+点分地址，网络字节序地址转换
+==========================
+inet_aton 成功1 else 0
+inet_ntoa 
+inet_addr 输入 点分地址，返回in_addr ,失败INADDR_NONE:255.255.255.255 so 此地址不可以此函数
+上述 只支持ipv4
+
+下面ipv4 ipv6 all OK
+inet_pton 指定family
+inet_ntop
