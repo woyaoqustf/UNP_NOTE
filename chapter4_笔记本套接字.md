@@ -20,4 +20,13 @@ int connect(int fd, sockaddr * serveraddr, sock_len_t addrlen);// 成功返回 0
   1. SYN 没有ACK,则分4，24 最多75s ETIMEOUT  
   2. RST 主机找到了，没有监听端口，我自己理解叫端口不可达  
   3. ICPM 路由路径不通， ENETUNREACH,EHOSTUNREACH , `OR connect不等待就返回 （NOBLOCK??）`  
-* fd在连接失败后，不能重用必须关闭**（why 待究）**
+* fd在连接失败后，不能重用必须关闭**(why 待究)**
+
+accept
+======
+```
+int accept(int fd, sockaddt *cliaddr, sock_len_t *sock_len); // 成功返回新连接的fd，客户号地址，长度在cliaddr,sock_len中， 失败返回-1
+```
+* 从已完成队列头返回完成的连接，若`完成队列为空进程睡眠`
+
+
