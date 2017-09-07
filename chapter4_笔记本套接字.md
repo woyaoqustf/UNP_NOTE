@@ -53,3 +53,10 @@ int getpeername(int sockfd, struct scokaddr *peername, sock_len_t *sock_len);
 * getpeername 获取对端的地址
 * 对fork exec的进程，由于内存镜像呗替换，原进程的sock数据结果被替换，用上述两个函数可获取相关的地址信息
 
+
+sockaddr_storage
+================
+* 在获取的地址不止长度时，用次结构做为结果存储结构，能存储任意类型的sockaddr类型
+* 对fork exec的进程，由于内存镜像呗替换，原进程的sock数据结果被替换，用上述两个函数可获取相关的地址信息
+* 对fork exec的进程，由于内存镜像呗替换，原进程的sock数据结果被替换，用上述两个函数可获取相关的地址信息
+
