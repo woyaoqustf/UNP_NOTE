@@ -11,7 +11,7 @@ int socket(int family, int type, int protocol); // 成功返回fd，失败 -1
 connect
 =======
 ```
-int connect(int fd, sockaddr * serveraddr, sock_len_t addrlen);// 成功返回 0，失败-1
+int connect(int fd, const struct sockaddr *serveraddr, sock_len_t addrlen);// 成功返回 0，失败-1
 ```
 * 客户端想server发起连接，在三次握手成功/失败后才会返回(NOBLOCK??)
 * 内核自动选择端口
@@ -31,7 +31,9 @@ int accept(int fd, sockaddt *cliaddr, sock_len_t *sock_len); // 成功返回新�
 
 exec
 ====
-* 当前进程镜像，替换成新的程序文件，将控制权交个新程序起点 一般main
+* 当前进程内存镜像，替换成新的程序文件，原进程的内存数据、数据结果没了
+* 将控制权交个新程序起点 一般main
+
 
 close
 =====
@@ -41,4 +43,13 @@ close
 * TODO SO_LINGER
 * 要是想真的`发送FIN可调用shutDown` ，**场景待究**
 
+getsockname、getpeername
+========================
+```
+int getsockname(int sockfd, struct sockaddr *localaddr, sock_len_t *sock_len);
+int getpeername(int sockfd, struct scokaddr *peername, sock_len_t *sock_len);
+```
+* getsockname 获取fd 本地的地址，server ADDR_ANY、PORT_ANY 绑定的fd，在accept后 可以此函数获取连接的本地地址
+* getpeername 获取对端的地址
+* 对fork exec的进程，由于内存镜像呗替换，原进程的sock数据结果被替换，用上述两个函数可获取相关的地址信息
 
