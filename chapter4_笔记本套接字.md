@@ -29,4 +29,8 @@ int accept(int fd, sockaddt *cliaddr, sock_len_t *sock_len); // 成功返回新�
 ```
 * 从已完成队列头返回完成的连接，若`完成队列为空进程睡眠`
 
+exec
+====
+* 当前进程镜像，替换成新的程序文件，将控制权交个新程序起点 一般main
+
 
