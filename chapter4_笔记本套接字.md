@@ -40,7 +40,7 @@ close
 * 将文件标记为已关闭，立即返回进程
 * 在进程中将不可用read，write不可读
 * TCP 继续尝试发送数据到对端，发送完毕，按正常流程关闭连接
-* TODO SO_LINGER
+* **TODO** SO_LINGER
 * 要是想真的`发送FIN可调用shutDown` ，**场景待究**
 
 getsockname、getpeername
