@@ -60,12 +60,19 @@ sockaddr_storage
 * 对fork exec的进程，由于内存镜像呗替换，原进程的sock数据结果被替换，用上述两个函数可获取相关的地址信息
 * 对fork exec的进程，由于内存镜像呗替换，原进程的sock数据结果被替换，用上述两个函数可获取相关的地址信息
 
+中断的系统调用
+=============
+* 在执行accept，read等函数时线程被阻塞，当收到信号时，正常应该处理中断，so线程需要从慢系统调用中苏醒，这是系统调用会返回错误，errno设置为EINT
+
 SIG
 ===
 * 设置SIG_IGN胡烈之
 * 设置SIG_DFL使用默认内核处理函数
 * **sig_mask** 设置`阻塞`的信号，相应的信号不会递交给进程
 * SIG_KILL SIG_STOP无法 被忽略，无法设置回调
+* SA_RESTART有些OS能自动重启中断的系统调用，有的不能需要处理EINT errno,为可移植性应该处理EINT
+* SIG_ALARM，通常是用作IO超时，应当 主动设置 中断系统调用**TODO???**
+
 ```
 struct sigaction {
         void     (*sa_handler)(int);
