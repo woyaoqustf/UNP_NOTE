@@ -74,3 +74,5 @@ struct sigacion{
 sigaction(int signo, struct sigaction* actions, struct sigaction *outactions)
 ```
  * 信号不排队，正在执行的信号被阻塞
+ 
+ 
