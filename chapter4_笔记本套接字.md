@@ -13,7 +13,7 @@ connect
 ```
 int connect(int fd, const struct sockaddr *serveraddr, socklen_t addrlen);// 成功返回 0，失败-1
 ```
-* 客户端想server发起连接，在三次握手成功/失败后才会返回(NOBLOCK??)
+* 客户端想server发起连接，~~在三次握手成功/失败后才会返回(NOBLOCK??)~~在收到server的ACK即返回
 * 内核自动选择端口
 * 失败的原因有三种：
   失败的话，就是三次握手失败  
