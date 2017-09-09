@@ -78,4 +78,10 @@ sigaction(int signo, struct sigaction* actions, struct sigaction *oldactions)
 ```
  * 信号不排队，正在执行的信号被阻塞
  
+ 被中断的系统调用
+ ===============
+ 
+ wait,wait_pid
+ =============
+ 
  
