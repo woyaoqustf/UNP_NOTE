@@ -67,11 +67,14 @@ SIG
 * **sig_mask** 设置`阻塞`的信号，相应的信号不会递交给进程
 * SIG_KILL SIG_STOP无法 被忽略，无法设置回调
 ```
-struct sigacion{
- sa_flags;//要设置的信号
- sa_handler;// 对应的信号处理函数
-}
-sigaction(int signo, struct sigaction* actions, struct sigaction *outactions)
+struct sigaction {
+        void     (*sa_handler)(int);
+        void     (*sa_sigaction)(int, siginfo_t *, void *);
+        sigset_t   sa_mask;
+        int        sa_flags;
+        void     (*sa_restorer)(void);
+    };
+sigaction(int signo, struct sigaction* actions, struct sigaction *oldactions)
 ```
  * 信号不排队，正在执行的信号被阻塞
  
