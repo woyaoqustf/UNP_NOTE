@@ -60,3 +60,17 @@ sockaddr_storage
 * 对fork exec的进程，由于内存镜像呗替换，原进程的sock数据结果被替换，用上述两个函数可获取相关的地址信息
 * 对fork exec的进程，由于内存镜像呗替换，原进程的sock数据结果被替换，用上述两个函数可获取相关的地址信息
 
+SIG
+===
+* 设置SIG_IGN胡烈之
+* 设置SIG_DFL使用默认内核处理函数
+* **sig_mask** 设置`阻塞`的信号，相应的信号不会递交给进程
+* SIG_KILL SIG_STOP无法 被忽略，无法设置回调
+```
+struct sigacion{
+ sa_flags;//要设置的信号
+ sa_handler;// 对应的信号处理函数
+}
+sigaction(int signo, struct sigaction* actions, struct sigaction *outactions)
+```
+ * 
