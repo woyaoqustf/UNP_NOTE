@@ -97,4 +97,12 @@ sigaction(int signo, struct sigaction* actions, struct sigaction *oldactions)
  * 在有多个子进程时，使用wait_pid, pid设置为-1（等待第一个结束的子进程），option设置 WNOHANG(不阻塞进程)
  * 没有任何子进程时 返回-1
  * 没有状态变化的子进程返回0
+ * 父进程应对在SIG_CLD的信号处理函数中调用wait_pid,且有多少child可以wait就掉多少次
+ ```
+ void sig_child(int signo) {
+    int stat;
+    while(wait_pid(-1, &stat, WNOHANG) > 0);
+    return;
+ }
+ ```
  
