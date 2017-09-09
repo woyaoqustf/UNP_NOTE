@@ -101,7 +101,7 @@ sigaction(int signo, struct sigaction* actions, struct sigaction *oldactions)
  ```
  void sig_child(int signo) {
     int stat;
-    while(wait_pid(-1, &stat, WNOHANG) > 0);
+    while(wait_pid(-1, &stat, WNOHANG) > 0)do_someting();
     return;
  }
  ```
