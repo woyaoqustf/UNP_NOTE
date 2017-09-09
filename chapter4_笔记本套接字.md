@@ -90,5 +90,9 @@ sigaction(int signo, struct sigaction* actions, struct sigaction *oldactions)
  
  wait,wait_pid
  =============
- 
+ ```
+ int wait(int *statloc);
+ int wait_pid(pid_t pid, int *statloc, int options);
+ ```
+ * 在有多个子进程时，使用wait_pid, pid设置为-1（等待第一个结束的子进程），option设置 WNOHANG(不阻塞信号，有几个信号调用几次，信号默认是阻塞的)
  
