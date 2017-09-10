@@ -28,6 +28,8 @@ accept
 int accept(int fd, sockaddt *cliaddr, socklen_t *sock_len); // 成功返回新连接的fd，客户号地址，长度在cliaddr,sock_len中， 失败返回-1
 ```
 * 从已完成队列头返回完成的连接，若`完成队列为空进程睡眠`
+* 在系统终端**EINT,或者ECONNABORT之后，EAGAIN，accept是可以重试的**，libevent就是这么处理的
+* ECONNABORT，这个错是在三次握手之后，连接已经进入完成队列，二在还没有accept返回之前，客户端发送了RST要断开连接，这个时候accept会返回错误，errno为ECONNABORT，此时accept是非致命错误，是可以重试的
 
 exec
 ====
