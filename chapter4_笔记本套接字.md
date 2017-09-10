@@ -115,3 +115,14 @@ sigaction(int signo, struct sigaction* actions, struct sigaction *oldactions)
  * 客户端收到RST的fd，再次写操作，内核发送SIGPIPE，写操作但会PIPE错误码
  * SIGPIPE默认终止进程，客户程序应当处理改信号(可能 client多次写一个server 关闭的放fd，在次之前RST数据没有被读到)
  
+ 服务器异常的几种情况
+ ==================
+ * 服务器进程结束，主机&网络都可达，但是监听该端口的进程退出了，这是服务器会返回RST, 客户端对已收到RST的fd写时发送SIGPIPE,返回PIPE错误
+ * 服务器崩溃，服务器的网络端口，机器关闭，或者路由器ICPM返回不可达，客户端会不断重试，到一定时间客户进程返回错误（what错）， 此时阻塞的read的函数  返回 ETIMEOUT OR (EHOSTUNREACH , ENETUNREACH (ICPM返回错误))
+ * 服务器重启，服务器重启后所有连接信息都丢失，在接受到没连接的数据是返回RST
+ 
+ RST
+ ==
+ * 服务端，没有端口监听之
+ * 接受到没有建立的数据，如服务端重启
+ 
