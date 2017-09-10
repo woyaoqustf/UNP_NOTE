@@ -66,6 +66,7 @@ sockaddr_storage
 
 SIG
 ===
+### 处理EINT,处理多子进程的 SIGCHLD,用wait_pid WNOHANG
 * 设置SIG_IGN胡烈之
 * 设置SIG_DFL使用默认内核处理函数
 * **sig_mask** 设置`阻塞`的信号，相应的信号不会递交给进程
@@ -95,7 +96,7 @@ sigaction(int signo, struct sigaction* actions, struct sigaction *oldactions)
  int wait_pid(pid_t pid, int *statloc, int options);
  ```
  * 在有多个子进程时，使用wait_pid, pid设置为-1（等待第一个结束的子进程），option设置 WNOHANG(不阻塞进程)
- * 没有任何子进程时 返回-1
+ * **没有任何子进程时 返回-1**
  * 没有状态变化的子进程返回0
  * 父进程应对在SIGCHLD的信号处理函数中调用wait_pid,且有多少child可以wait就掉多少次
  ```
