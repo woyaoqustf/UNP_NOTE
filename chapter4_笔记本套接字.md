@@ -109,3 +109,9 @@ sigaction(int signo, struct sigaction* actions, struct sigaction *oldactions)
  }
  ```
  
+ 服务进程终止
+ ==========
+ * 在服务主机进程终止，收到数据是，返回RST，read时返回EOF 返回0 （server TIME_WAIT2, client CLOSE_WAIT）
+ * 客户端收到RST的fd，再次写操作，内核发送SIGPIPE，写操作但会PIPE错误码
+ * SIGPIPE默认终止进程，客户程序应当处理改信号(可能 client多次写一个server 关闭的放fd，在次之前RST数据没有被读到)
+ 
