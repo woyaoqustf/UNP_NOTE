@@ -32,7 +32,7 @@ int setsockopt(int sockfd, int level, int optname, void *optval, sock_len *optle
     4. 套接字出错时：  
       1. 套接字阻塞在select上，读写有监听，都设置为满足  
       2. 多使用信号驱动的IO, 发送SIGIO  
-    5. read，有还有数据未处理，将先返回未处理的数据，无返回errorno置为so_error ,then重置为0  
-    6. write 有错errno 置为 so_error,then 重置为0  
+    5. read，so_errno 不为0，还有数据未处理，将先返回未处理的数据，无 errno置为so_error ,then重置为0  
+    6. write so_errno 不为0，errno 置为 so_error,then 重置为0  
     7. 通过getsockopt获取，返回相应值，重置0  
     8. 在异步多线程的情况先，使用SO_ERROR的方式合理，应为errno可能被多个线程覆盖  
