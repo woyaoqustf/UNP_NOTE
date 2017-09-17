@@ -25,3 +25,14 @@ int setsockopt(int sockfd, int level, int optname, void *optval, sock_len *optle
 - SO_BREADCAST
 - SO_DEBUG
     仅对TCP有效，在**内核环形缓冲区**，记录fd上结束发送的**分组**的详细信息
+- SO_ERROR
+    只可获取的选项
+    内核在各套接字上有so_error变量
+    将so_error 转换成EXX （pending error）
+    套接字出错时：
+      1. 套接字阻塞在select上，读写有监听，都设置为满足
+      2. 多使用信号驱动的IO, 发送SIGIO
+    read，有还有数据未处理，将先返回未处理的数据，无返回errorno置为so_error ,then重置为0
+    write 有错errno 置为 so_error,then 重置为0
+    通过getsockopt获取，返回相应值，重置0
+    在异步多线程的情况先，使用SO_ERROR的方式合理，应为errno可能被多个线程覆盖
