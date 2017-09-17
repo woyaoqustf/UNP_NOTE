@@ -25,7 +25,7 @@ int setsockopt(int sockfd, int level, int optname, void *optval, sock_len *optle
 - SO_BREADCAST
 - SO_DEBUG
     仅对TCP有效，在**内核环形缓冲区**，记录fd上结束发送的**分组**的详细信息
-- SO_ERROR
+- SO_ERROR  
     1. 只可获取的选项  
     2. 内核在各套接字上有so_error变量  
     3. 将so_error 转换成EXX （pending error）  
