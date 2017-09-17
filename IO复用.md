@@ -45,7 +45,10 @@ struct pollfd{
 poll的事件总结为三类，normal， 带外， 异常
 按照读写分又可分为 读，写 ，异常
 #### normal：
-POLLIN（定义为POLLRDNORMAL|POLLRDBAND）， POLLRDNORMAL, POLLOUT、POLLWRNORMAL
+POLLIN（定义为POLLRDNORMAL|POLLRDBAND  
+POLLRDNORMAL  
+POLLOUT  
+POLLWRNORMAL  
 
 #### 带外
 POLLRDBAND, POLLWRBAND, POLLPIR(带外优先级读数据)  
