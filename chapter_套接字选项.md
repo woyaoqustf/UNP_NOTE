@@ -35,4 +35,17 @@ int setsockopt(int sockfd, int level, int optname, void *optval, sock_len *optle
     5. read，so_errno 不为0，还有数据未处理，将先返回未处理的数据，无 errno置为so_error ,then重置为0  
     6. write so_errno 不为0，errno 置为 so_error,then 重置为0  
     7. 通过getsockopt获取，返回相应值，重置0  
-    8. 在异步多线程的情况先，使用SO_ERROR的方式合理，应为errno可能被多个线程覆盖  
+    8. 在异步多线程的情况先，使用SO_ERROR的方式合理，应为errno可能被多个线程覆盖 
+    
+   
+ - SO_KEEPALIVE
+ 2小时任一方向都无数据，发送探活分节数据， 对方**必须响应**  
+ 三种情况
+ 1. 结束到对方回复，说明对方存活着，客户进程无感知
+ 2. 收到RST, 对方崩溃已经重启，so_errno 设置为ECONNRESET
+ 3. 超时，正常每隔75s发送一次，直到有回复，或者吵过最大等待时间（10分钟默认），返回ETIMEOUT
+ 4. ICPM 返回错误码，如主机不可达（HOSTUNREACH一般网络不通，或者对方机器崩溃），返回相应的错误
+ 5. 
+
+    
+    
