@@ -29,3 +29,33 @@ int shutdown(int sockfd, int howto);//成功返回0， 失败反回-1
 - SHUT_RD 关闭读一半，所有接收到的字节返回ACK，数据被丢弃，读操作会出错
 - SHUT_WR 进入半关闭状态， 所有缓冲区的字节都发送完毕，后接正常的种种序列（FIN?) ,对套接字写报错
 - SHUT_RDWR 相当于先调SHUT_RD, SHUT_WR
+
+poll
+===
+```
+int poll(stuct pollfd *fdarray, unsigned long nfds, int timeout);// 返回就绪个数，超时返回0，失败范湖-1
+
+struct pollfd{
+  int fd; // fd
+  int events; // 关心的events
+  int revents; // 出现的事件
+};
+```
+### 事件类型
+poll的事件总结为三类，normal， 带外， 异常
+按照读写分又可分为 读，写 ，异常
+#### normal：
+POLLIN（定义为POLLRDNORMAL|POLLRDBAND）， POLLRDNORMAL, POLLOUT、POLLWRNORMAL
+
+#### 带外
+POLLRDBAND, POLLWRBAND, POLLPIR(带外优先级读数据)  
+
+#### 异常
+POLLERR  // 错误
+POLLHUP //发生挂起？
+POLLNVAL //fd 未打开
+
+正常不要随便使用带外
+
+
+
