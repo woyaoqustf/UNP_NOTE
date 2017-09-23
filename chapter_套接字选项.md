@@ -47,5 +47,20 @@ int setsockopt(int sockfd, int level, int optname, void *optval, sock_len *optle
     4. ICPM 返回错误码，如主机不可达（HOSTUNREACH一般网络不通，或者对方机器崩溃），返回相应的错误  
 3. 2小时保活时间参数可改，但**一般内核都是维护全局保活时间**，一旦修改可能影响其他设置此参数的进程
 
+TODO SO_LINGER
+==============
+
+TODO SO_SNDBUF SO_RCVBUF
+========================
+
+TODO SO_RCVLOWAT SO_SNDLOWAT
+============================
+
+
+SO_REUSEADDR SO_REUSEPORT
+=========================
+
+
+
     
     
