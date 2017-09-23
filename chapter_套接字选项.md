@@ -60,6 +60,13 @@ TODO SO_RCVLOWAT SO_SNDLOWAT
 SO_REUSEADDR SO_REUSEPORT
 =========================
 
+TCP 选项
+========
+
+TCP_MSS
+========
+设置TCP连接分节的最大的size，通常以对端SYN设置，如果设置的值小于对端的SYN则设置为相应的值
+
 
 
     
