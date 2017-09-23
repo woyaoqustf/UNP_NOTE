@@ -77,8 +77,8 @@ TCP_NODELAY
 
 fctl
 ====
-F_SET O_NONBLOCK  流程，先F_GET 或上O_NONBLOCK 然后F_SET
-F_SET A_SYN fd状态任何变化发送SIGIO到**属主进程** 进程id OR pgid
+F_SET O_NONBLOCK  流程，先F_GET 或上O_NONBLOCK 然后F_SET  
+F_SET A_SYN fd状态任何变化发送SIGIO到**属主进程** 进程id OR pgid  
 F_ETOWN 后接正数，进程id ，**负数 进程组id**，返回属主（-1 出错）信号会单个进程或者**整个进程组**接受信号
 
 
