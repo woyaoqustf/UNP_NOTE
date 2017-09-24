@@ -16,5 +16,8 @@ struct hostent {
 
 错误码，可用hstrerror 函数转换为字符串
 
+struct hostent gethostbyaddr(const char *addr, socklen_t lem, int family);
+gethostbyname的逆操作
+
 ```
 
